@@ -1,0 +1,25 @@
+services:
+  web:
+    build: web
+    command: sh -c "flask --debug run --host=0.0.0.0"         # --debug pour recharger le server lorsqu'il y a des modifs effectué | --host=0.0.0.0 pour dire qu'il peut prendre n'importe quel IP
+    working_dir: /videotheque                                 # Dossier dans le conteneur
+    depends_on:                                               # De quel dossier de la machine ubuntu il depend
+      - app
+    links:                                                    # Sorte de DNS qui permet de taper ce nom plutôt que l'IP.
+      - app
+    ports:
+      - "56733:5000"                                          # Redirection du port 56733 de la Ubuntu vers le port 5000 du conteneur (Default port for flask : 5000)
+    volumes:
+      - type: bind
+        source: web
+        target: /videotheque
+  app:
+    build: app
+    command: sh -c "flask --debug run --host=0.0.0.0"
+    expose:
+      - "5000"
+    working_dir: /videotheque
+    volumes:
+      - type: bind
+        source: app
+        target: /videotheque

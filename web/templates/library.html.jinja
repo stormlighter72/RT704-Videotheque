@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vidéothèque</title>
+</head>
+<style>
+.background{
+  background-color: rgb(59, 59, 59);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.box{
+  width: auto;
+  padding: 20px;
+  top: 10%;
+  display: flex;
+  background: #f6f6f6;
+  margin: 10px auto;
+}
+.item{
+  height: auto;
+  padding: 10px;
+  background: lightsteelblue;
+  border: 1px solid #ddd;
+  flex: 1;
+  transition: 0.5s;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.information_hidden{
+  display: none;
+}
+.information_show{
+  display: contents;
+}
+.item:hover{
+  flex: 3;
+  background: rgb(43, 117, 213);
+}
+nav{
+  background-color: rgb(59, 59, 59);
+}
+nav a{
+  color: #f6f6f6;
+  top: 0%;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 34px;
+  border-top: 1px solid #353939;
+  border-bottom: 1px solid #2e3131;
+}
+nav a:hover{
+  color: aqua;
+}
+nav form{
+  color: #f6f6f6;
+  top: 0%;
+  float: right;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 34px;
+  border-top: 1px solid #353939;
+  border-bottom: 1px solid #2e3131;
+}
+nav p{
+  color: #f6f6f6;
+  top: 0%;
+  float: right;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 34px;
+  border-top: 1px solid #353939;
+  border-bottom: 1px solid #2e3131;
+}
+</style>
+<script>
+  function information(index){
+    var class_objet = document.getElementById('information_'+index);
+    if(class_objet.className == "information_hidden"){
+      document.getElementById('information_'+index).className = 'information_show';
+    }
+    else{
+      document.getElementById('information_'+index).className = 'information_hidden';
+    }
+  }
+</script>
+<body class="background">
+<div>
+<nav>
+<a href="/">Home</a>
+<p>
+Dernière Modification de la Library : {{video["derniere_modif"]}} <br>
+Propriétaire de la library : {{video["proprietaire"]["nom"]}} {{video["proprietaire"]["prenom"]}}
+</p>
+<form action="/search-results.php">
+    <label for="search-query">Search:</label>
+    <input type="text" id="search-query" name="q">
+    <button type="submit">Go</button>
+</form>
+
+</nav>
+</div>
+<div class="box">
+<ul>
+{% for film in video["films"] %}
+    <div class="item" onclick="information({{loop.index}})" title="Click for more information about the film">
+    <h2>{{film["titre"]}}</h2>
+    </div>
+
+    <div class="information_hidden" id="information_{{loop.index}}" >
+    <h4>
+    {{film["realisateur"]["prenom"]}}
+    {{film["realisateur"]["nom"]}}
+    </h4>
+    <ul>
+    {%for acteur in film["acteurs"]%}
+        <li>
+        {{acteur["prenom"]}}
+        {{acteur["nom"]}}
+        </li>
+    {%endfor%}
+    </ul>
+    </div>
+{% endfor %}
+{# {{video}} #}
+</ul>
+</div>
+</body>
+</html>
