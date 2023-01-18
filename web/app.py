@@ -1,4 +1,4 @@
-from flask import Flask, abort, render_template, request
+from flask import Flask, abort, render_template, request, redirect, url_for
 import requests
 
 app_url = "http://app:5000/"
@@ -29,24 +29,52 @@ def Library_2():
     else:
         abort(response.status_code)
 
-@app.get('/addfilm')
+@app.route('/addfilm', methods = ["GET", "POST"])
 def AddFilm():
-    titre = request.json['titre']
-    annee = request.json['annee']
-    nom_realisateur = request.json['nom_real']
-    prenom_realisateur = request.json['prenom_real']
-    nom_acteur1 = request.json['nom_acteur1']
-    nom_acteur2 = request.json['nom_acteur2']
-    nom_acteur3 = request.json['nom_acteur3']
-    prenom_acteur1 = request.json['prenom_acteur1']
-    prenom_acteur2 = request.json['prenom_acteur2']
-    prenom_acteur3 = request.json['prenom_acteur3']
+    if request.method == "GET" :
+        return render_template("addfilm.html.jinja")
     
-    response = requests.post(app_url, json={"titre":titre, "annee":annee, "nom_realisateur":nom_realisateur, "prenom_realisateur":prenom_realisateur, "nom_acteur1":nom_acteur1, "prenom_acteur1":prenom_acteur1, "nom_acteur2":nom_acteur2, "prenom_acteur2":prenom_acteur2, "nom_acteur3":nom_acteur3, "prenom_acteur3":prenom_acteur3,})
-    if response.status_code == 200 :
-        return response
     else:
-        return response
+        titre = request.form['titre']
+        annee = request.form['annee']
+        nom_realisateur = request.form['nom_realisateur']
+        prenom_realisateur = request.form['prenom_realisateur']
+        nom_acteur1 = request.form['nom_acteur1']
+        nom_acteur2 = request.form['nom_acteur2']
+        nom_acteur3 = request.form['nom_acteur3']
+        prenom_acteur1 = request.form['prenom_acteur1']
+        prenom_acteur2 = request.form['prenom_acteur2']
+        prenom_acteur3 = request.form['prenom_acteur3']
+    
+        response = requests.post(app_url+"addfilm", json={"titre":titre, "annee":annee, "nom_realisateur":nom_realisateur, "prenom_realisateur":prenom_realisateur, "nom_acteur1":nom_acteur1, "prenom_acteur1":prenom_acteur1, "nom_acteur2":nom_acteur2, "prenom_acteur2":prenom_acteur2, "nom_acteur3":nom_acteur3, "prenom_acteur3":prenom_acteur3,})
+        if response.status_code == 200 :
+            return redirect(url_for("Library_1"))
+        else:
+            return response.text
+    
+    
+@app.route('/addfilm2', methods = ["GET", "POST"])
+def AddFilm2():
+    if request.method == "GET" :
+        return render_template("addfilm2.html.jinja")
+    
+    else:
+        titre = request.form['titre']
+        annee = request.form['annee']
+        nom_realisateur = request.form['nom_realisateur']
+        prenom_realisateur = request.form['prenom_realisateur']
+        nom_acteur1 = request.form['nom_acteur1']
+        nom_acteur2 = request.form['nom_acteur2']
+        nom_acteur3 = request.form['nom_acteur3']
+        prenom_acteur1 = request.form['prenom_acteur1']
+        prenom_acteur2 = request.form['prenom_acteur2']
+        prenom_acteur3 = request.form['prenom_acteur3']
+    
+        response = requests.post(app_url+"addfilm2", json={"titre":titre, "annee":annee, "nom_realisateur":nom_realisateur, "prenom_realisateur":prenom_realisateur, "nom_acteur1":nom_acteur1, "prenom_acteur1":prenom_acteur1, "nom_acteur2":nom_acteur2, "prenom_acteur2":prenom_acteur2, "nom_acteur3":nom_acteur3, "prenom_acteur3":prenom_acteur3,})
+        if response.status_code == 200 :
+            return redirect(url_for("Library_2"))
+        else:
+            return response.text
     
 
 @app.errorhandler(404)

@@ -1,9 +1,9 @@
 {
-    "proprietaire" : {
-        "nom" : "CHARIEAU",
-        "prenom" : "Maxime"
+    "proprietaire": {
+        "nom": "CHARIEAU",
+        "prenom": "Maxime"
     },
-    "derniere_modif" : "07/12/2022",
+    "derniere_modif": "07/12/2022",
     "films": [
         {
             "titre": "Pulp fiction",
@@ -155,7 +155,7 @@
                 },
                 {
                     "nom": "Pousse",
-                    "prenom": "André"
+                    "prenom": "Andr\u00e9"
                 }
             ]
         },
@@ -222,6 +222,28 @@
                 {
                     "nom": "Brown",
                     "prenom": "James"
+                }
+            ]
+        },
+        {
+            "titre": "add",
+            "annee": "film",
+            "realisateur": {
+                "nom": "test",
+                "prenom": "numero"
+            },
+            "acteurs": [
+                {
+                    "nom": "1 ",
+                    "prenom": "2"
+                },
+                {
+                    "nom": "2",
+                    "prenom": "23"
+                },
+                {
+                    "nom": "3",
+                    "prenom": "4"
                 }
             ]
         }

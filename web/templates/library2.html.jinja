@@ -87,17 +87,22 @@ nav p{
 <body class="background">
 <div>
 <nav>
+<table>
+<td>
 <a href="/">Home</a>
-<p>
+</td>
+<td>-------------------------------------------------------------</td>
+<td>
+  <a href="/addfilm2">Add Film</a>
+</td>
+<td>---------------------------------------------------------------------------------</td>
+<td>
+<a>
 Dernière Modification de la Library : {{video["derniere_modif"]}} <br>
 Propriétaire de la library : {{video["proprietaire"]["nom"]}} {{video["proprietaire"]["prenom"]}}
-</p>
-<form action="/search-results.php">
-    <label for="search-query">Search:</label>
-    <input type="text" id="search-query" name="q">
-    <button type="submit">Go</button>
-</form>
-
+</a>
+</td>
+</table>
 </nav>
 </div>
 <div class="box">
