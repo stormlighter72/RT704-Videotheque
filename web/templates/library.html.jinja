@@ -72,6 +72,14 @@ nav p{
   border-top: 1px solid #353939;
   border-bottom: 1px solid #2e3131;
 }
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+input,
+label {
+    margin: 0.4rem 0;
+}
 </style>
 <script>
   function information(index){
@@ -83,21 +91,27 @@ nav p{
       document.getElementById('information_'+index).className = 'information_hidden';
     }
   }
+
 </script>
 <body class="background">
 <div>
 <nav>
+<table>
+<td>
 <a href="/">Home</a>
-<p>
+</td>
+<td>-------------------------------------------------------------</td>
+<td>
+  <a href="/addfilm">Add Film</a>
+</td>
+<td>---------------------------------------------------------------------------------</td>
+<td>
+<a>
 Dernière Modification de la Library : {{video["derniere_modif"]}} <br>
 Propriétaire de la library : {{video["proprietaire"]["nom"]}} {{video["proprietaire"]["prenom"]}}
-</p>
-<form action="/search-results.php">
-    <label for="search-query">Search:</label>
-    <input type="text" id="search-query" name="q">
-    <button type="submit">Go</button>
-</form>
-
+</a>
+</td>
+</table>
 </nav>
 </div>
 <div class="box">
@@ -122,6 +136,7 @@ Propriétaire de la library : {{video["proprietaire"]["nom"]}} {{video["propriet
     </ul>
     </div>
 {% endfor %}
+
 {# {{video}} #}
 </ul>
 </div>

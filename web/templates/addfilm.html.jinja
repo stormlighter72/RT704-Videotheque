@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vidéothèque</title>
+</head>
+<style>
+.background{
+  background-color: rgb(59, 59, 59);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.box{
+  width: auto;
+  padding: 20px;
+  display: flex;
+  background: #f6f6f6;
+  margin: 10px auto;
+}
+.item{
+  height: auto;
+  padding: 10px;
+  background: rgb(59, 59, 59);
+  border: none;
+  align-items: center;
+  justify-content: center;
+}
+nav{
+  background-color: rgb(59, 59, 59);
+}
+nav a{
+  color: #f6f6f6;
+  top: 0%;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 34px;
+  border-top: 1px solid #353939;
+  border-bottom: 1px solid #2e3131;
+}
+nav details{
+  color: #f6f6f6;
+  top: 0%;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 34px;
+  border-top: 1px solid #353939;
+  border-bottom: 1px solid #2e3131;
+}
+nav details summary:hover{
+  color: aqua;
+}
+nav a:hover{
+  color: aqua;
+}
+nav form{
+  color: #f6f6f6;
+  top: 0%;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 34px;
+  border-top: 1px solid #353939;
+  border-bottom: 1px solid #2e3131;
+}
+</style>
+<script>
+function addfilm(){
+  alert(test)
+}
+</script>
+
+<body class="background">
+<nav>
+<table>
+<td>
+<a href="/">Home</a>
+</td>
+</table>
+</nav>
+<div class="box">
+<form action="{{ url_for('AddFilm')}}" method="post">
+
+  <a>
+  <h3>Titre</h3>
+  <label>Titre du Film : <input type="text" placeholder="Enter text" id="titre" name="titre"></label>
+  <br>
+  <br>
+  <h3>Année</h3>
+  <label>Année de Réalisation : <input type="text" placeholder="Enter text" id="annee" name="annee"></label>
+  <br>
+  <br>
+  <h3>Réalisateur</h3>
+  <label>Nom du Réalisateur : <input type="text" placeholder="Enter text" id="nom_realisateur" name="nom_realisateur"></label>
+  <br>
+  <label>Prénom du Réalisateur : <input type="text" placeholder="Enter text" id="prenom_realisateur" name="prenom_realisateur"></label>
+  <br>
+  <br>
+  <h3>Acteurs</h3>
+  <label>Nom Acteur 1 : <input type="text" placeholder="Enter text" id="nom_acteur1" name="nom_acteur1"></label>
+  <br>
+  <label>Prénom Acteur 1 : <input type="text" placeholder="Enter text" id="prenom_acteur1" name="prenom_acteur1"></label>
+  <br>
+  <label>Nom Acteur 2 : <input type="text" placeholder="Enter text" id="nom_acteur2" name="nom_acteur2"></label>
+  <br>
+  <label>Prénom Acteur 2 : <input type="text" placeholder="Enter text" id="prenom_acteur2" name="prenom_acteur2"></label>
+  <br>
+  <label>Nom Acteur 3 : <input type="text" placeholder="Enter text" id="nom_acteur3" name="nom_acteur3"></label>
+  <br>
+  <label>Prénom Acteur 3 : <input type="text" placeholder="Enter text" id="prenom_acteur3" name="prenom_acteur3"></label>
+  <br>
+  <button onclick="addfilm()">Ajouter le film</button>
+  </a>
+
+</form>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.10
 WORKDIR /videotheque
 RUN pip install flask
 RUN pip install requests
