@@ -53,7 +53,7 @@ nav details summary:hover{
 nav a:hover{
   color: aqua;
 }
-nav form{
+nav p{
   color: #f6f6f6;
   top: 0%;
   padding-right: 20px;
@@ -63,33 +63,24 @@ nav form{
   border-bottom: 1px solid #2e3131;
 }
 </style>
-<script type="text/javascript" src="test.js"></script>
 <body class="background">
 <nav>
-<details>
-    <summary>Menu</summary>
-    <table>
-      <td>
-        <p>Videotheques :</p>
-        <ul>
-            <li><a href="library1">Videotheque de Corentin</a></li>
-            <li><a href="library2">Videotheque de Maxime</a></li>
-        </ul>
-      </td>
-      <td>------------------------------------------------------</td>
-      <td>
-        <p>Contacts :</p>
-        <ul>
-            <a>Corentin : corentin.richard@etudiant.univ-reims.fr<br><span>&emsp;</span> Maxime : maxime.charieau@etudiant.univ-reims.fr</a>
-        </ul>
-      </td>
-    </table>
-</details>
-<form action="/search-results.php">
-    <label for="search-query">Search:</label>
-    <input type="text" id="search-query" name="q">
-    <button type="submit">Go</button>
-</form>
+<table>
+    <td>
+      <p>Videotheques :</p>
+      <ul>
+          <a href="library1">Videotheque de Corentin</a><br>
+          <a href="library2">Videotheque de Maxime</a>
+      </ul>
+    </td>
+    <td>-----------------------------------------------------------------------------------------------------------------------------</td>
+    <td>
+      <p>Contacts :</p>
+      <ul>
+          <a>Corentin : corentin.richard@etudiant.univ-reims.fr<br><span>&emsp;</span> Maxime : maxime.charieau@etudiant.univ-reims.fr</a>
+      </ul>
+  </td>
+</table>
 </nav>
 <div class="box">
 <img class="item" src="{{url_for('static', filename='IMG/mozaique.png')}}">

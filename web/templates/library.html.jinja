@@ -115,27 +115,34 @@ Propriétaire de la library : {{video["proprietaire"]["nom"]}} {{video["propriet
 </nav>
 </div>
 <div class="box">
-<ul>
-{% for film in video["films"] %}
-    <div class="item" onclick="information({{loop.index}})" title="Click for more information about the film">
-    <h2>{{film["titre"]}}</h2>
-    </div>
+  <ul>
+    {% for film in video["films"] %}
+        <div class="item" onclick="information({{loop.index}})" title="Click for more information about the film">
+        <h2>{{film["titre"]}}</h2>
+        </div>
 
-    <div class="information_hidden" id="information_{{loop.index}}" >
-    <h4>
-    {{film["realisateur"]["prenom"]}}
-    {{film["realisateur"]["nom"]}}
-    </h4>
-    <ul>
-    {%for acteur in film["acteurs"]%}
-        <li>
-        {{acteur["prenom"]}}
-        {{acteur["nom"]}}
-        </li>
-    {%endfor%}
-    </ul>
-    </div>
-{% endfor %}
+        <div class="information_hidden" id="information_{{loop.index}}" >
+        <h4>
+        {{film["realisateur"]["prenom"]}}
+        {{film["realisateur"]["nom"]}}
+        </h4>
+        <ul>
+        {%for acteur in film["acteurs"]%}
+            <li>
+            {{acteur["prenom"]}}
+            {{acteur["nom"]}}
+            </li>
+        {%endfor%}
+        </ul>
+        </div>
+          <form action="{{url_for('DelFilm')}}" method="post">
+            <button name="delete" class="item" value="{{film['titre']}}">Delete Film</button>
+          </form>
+          <form action="{{url_for('ModifFilm')}}" method="get">
+            <button name="modif" class="item" value="{{film['titre']}}">Modif Film</button>
+          </form>
+
+    {% endfor %}
 
 {# {{video}} #}
 </ul>
